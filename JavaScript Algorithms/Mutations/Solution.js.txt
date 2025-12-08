@@ -1,0 +1,20 @@
+** start of script.js **
+
+function mutation(array) {
+  let word1 = array[0].toLowerCase()
+  let word2 = array[1].toLowerCase()
+
+  for (let character of word2) {
+    if (!word1.includes(character)) {
+      return false
+    } 
+  }
+return true
+
+}
+
+
+console.log(mutation(["hello","Hello"]))
+
+** end of script.js **
+
