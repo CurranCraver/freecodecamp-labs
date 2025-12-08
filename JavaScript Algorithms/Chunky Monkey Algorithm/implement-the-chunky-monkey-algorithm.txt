@@ -1,0 +1,36 @@
+** start of script.js **
+
+function chunkArrayInGroups(array,number) {
+  let newNum = number
+  let prevNum = 0
+  let newArray = []
+  for (let i = 0; i < array.length; i++) {
+    if (i % number === 0) {
+      newArray.push(array.slice(prevNum, newNum))
+      newNum += number
+      prevNum += number
+      console.log(newArray)
+      
+    }
+   
+    }
+    return newArray
+   
+
+
+ }
+console.log(chunkArrayInGroups(["dumb", "bumb", "lumb", "stumb", "rumb"], 2))
+
+
+// Slice works .slice(startIndex, endIndex)
+
+/*
+use a for loop to get the ...rest of the elements in the array into the new array by doing -
+
+i % number === 0
+
+if the number is up by that number
+*/
+
+** end of script.js **
+
