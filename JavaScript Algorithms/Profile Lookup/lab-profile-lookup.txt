@@ -1,0 +1,70 @@
+** start of script.js **
+
+let contacts = [
+  {
+    firstName: "Akira",
+    lastName: "Laine",
+    number: "0543236543",
+    likes: ["Pizza", "Coding", "Brownie Points"],
+  },
+  {
+    firstName: "Harry",
+    lastName: "Potter",
+    number: "0994372684",
+    likes: ["Hogwarts", "Magic", "Hagrid"],
+  },
+  {
+    firstName: "Sherlock",
+    lastName: "Holmes",
+    number: "0487345643",
+    likes: ["Intriguing Cases", "Violin"],
+  },
+  {
+    firstName: "Kristian",
+    lastName: "Vos",
+    number: "unknown",
+    likes: ["JavaScript", "Gaming", "Foxes"],
+  },
+];
+
+function lookUpProfile(name,property) { 
+  for (let i = 0; i < contacts.length; i++) { 
+    if (contacts[i]["firstName"] === name && contacts[i][property] !== undefined) {
+      console.log(contacts[i]["firstName"]) 
+      return contacts[i][property]
+    } 
+    else if (contacts[i]["firstName"] === name && contacts[i][property] === undefined) {
+      return "No such property"
+    } 
+    }
+    
+  
+    return "No such contact"
+}
+       
+      
+
+
+
+
+console.log(lookUpProfile("Sherlock","number"))
+
+function test1(keyProp) {
+  
+  if (contacts[1][keyProp] === undefined) {
+  return "yes"
+} return "no"
+}
+console.log(contacts[1]["firstName"])
+
+console.log(test1("number"))
+
+
+ /* trying to figure out how to check if a property exists on an object
+
+
+
+ */
+
+** end of script.js **
+
