@@ -1,0 +1,29 @@
+** start of script.js **
+
+function fearNotLetter(string){
+  for (let i = 0; i < string.length - 1; i++) {
+    let currentCode = string[i].charCodeAt()
+    let nextCode = string[i+1].charCodeAt()
+    console.log(currentCode)
+    console.log(nextCode)
+
+    if (nextCode - 1 !== currentCode) {
+      return String.fromCharCode(nextCode - 1)
+    }
+  }
+}
+
+console.log(fearNotLetter("abcdfghi"))
+
+let word = "az"
+
+
+// (/\s+/)  /[a-z]/ 
+
+// if letter .charCodeAt() 
+
+console.log(String.fromCharCode(65))
+console.log(word[0].charCodeAt() + word.length)
+
+** end of script.js **
+
