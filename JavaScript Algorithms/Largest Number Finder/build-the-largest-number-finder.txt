@@ -1,0 +1,34 @@
+** start of script.js **
+
+function largestOfAll(array) {
+  let bigNums = []
+  
+  for (let i = 0; i < array.length; i++) {
+      let biggestNum = array[i][0]
+    for (let j = 0; j < array[i].length; j++) {
+      let currentNum = array[i][j]
+          if (currentNum > biggestNum) {
+            biggestNum = currentNum
+           
+                           
+          } 
+
+        console.log(currentNum)
+        console.log(bigNums)
+       
+      
+      
+    } bigNums.push(biggestNum)
+  } return bigNums
+}
+
+
+
+
+console.log(largestOfAll([[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]]))
+
+
+// bigNums.splice(i, 1, currentNum)
+
+** end of script.js **
+
