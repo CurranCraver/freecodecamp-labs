@@ -1,0 +1,36 @@
+** start of script.js **
+
+function pyramid(string,num,boolean) {
+  let result = ''
+  
+  if (boolean === true) {
+    for (let i = 0; i < num; i++) {
+    let spaces = " ".repeat(i)
+    let symbols = string.repeat((num * 2 - 1) - (i * 2))
+        if (i === 0) {
+          result += `\n` + spaces + symbols + `\n`
+        } else {
+          result += spaces + symbols + `\n`
+        }
+  } 
+
+  } else {
+    for (let i = 0; i < num; i++) {
+      let spaces = " ".repeat(num - i -1)
+      let symbols = string.repeat((1) + (i * 2))
+      if (i === 0) {
+        result += `\n` + spaces + symbols + `\n`
+      } else {
+        result += spaces + symbols + `\n`
+      }
+      
+    }
+  }
+
+  
+  return result  
+}
+console.log(pyramid("o", 5, false))
+
+** end of script.js **
+
