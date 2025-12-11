@@ -1,0 +1,49 @@
+** start of script.js **
+
+function titleCase(string) {
+  let oldString = string.toLowerCase()
+  let newString = ''
+  for (let i = 0; i < oldString.length; i++) {
+    if (i === 0) {
+      newString = oldString.slice(i, i+1).toUpperCase()
+      continue
+    }
+    if (newString.slice(i-1, i) === " ") {
+      newString += oldString.slice(i, i + 1).toUpperCase()   
+        } else {
+          newString += oldString.slice(i, i+1)
+        }
+  }return newString
+}
+console.log(titleCase("i'm a little tea pot"))
+
+
+let test = "hello"
+
+test = test.replace(test[3], test[3].toUpperCase())
+console.log(test)
+
+
+function testSlice(string) {
+  let newString = ''
+  for (let i = 0; i < string.length; i++) {
+    if (string.slice(i- 1,i) === " ") {
+      newString += string.slice(i, i+1).toUpperCase()
+  
+  console.log(newString)
+    } else { 
+      newString += string.slice(i,i+1)
+  console.log(newString)
+    }
+  
+} return newString
+}
+console.log(`
+
+
+testSlice: ${testSlice("hello world")} `)
+
+
+
+** end of script.js **
+
