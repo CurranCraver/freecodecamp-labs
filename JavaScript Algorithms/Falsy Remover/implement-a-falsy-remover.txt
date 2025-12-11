@@ -1,0 +1,33 @@
+** start of script.js **
+
+function bouncer(bouncer) {
+  let newArray = [...bouncer]
+  let trueArray = []
+  for (let i = 0; i < newArray.length; i++) {
+      if (newArray[i]) {
+        trueArray.push(newArray[i])
+      } else {
+        continue
+      }
+  }
+  return trueArray
+}
+
+
+console.log(bouncer([7, "ate", "", false, 9]))
+
+
+
+/*  Map attempt (not sure how to delete falsy elemets with map)
+return newArray
+    .map(char => {
+      if (char !== false || null || 0 || "" || undefined || NaN) {
+    return char
+  } else {
+    
+  }
+    })
+*/
+
+** end of script.js **
+
