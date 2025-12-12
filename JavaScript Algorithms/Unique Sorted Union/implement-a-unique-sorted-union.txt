@@ -1,0 +1,30 @@
+** start of script.js **
+
+function uniteUnique(...args) {
+  let allArrays = []
+
+  let args1 = args.join(",").trim()
+
+  console.log(args1)
+  for (let elements of args1) {
+    let elements1 = parseInt(elements)
+    if (!allArrays.includes(elements1) && elements !== ",") {
+    parseInt(elements)
+    allArrays.push(parseInt(elements))
+
+    }
+  }
+  
+  return allArrays
+  
+     
+}
+console.log(uniteUnique([3, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]))
+
+let args = ''
+for (let elements of args) {
+
+}
+
+** end of script.js **
+
