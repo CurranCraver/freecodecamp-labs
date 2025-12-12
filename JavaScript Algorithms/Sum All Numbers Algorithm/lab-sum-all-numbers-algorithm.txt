@@ -1,0 +1,26 @@
+** start of script.js **
+
+function sumAll(array) {
+  let lowerNumber = 0
+  let higherNumber = array[0]
+  let sum = 0
+  if (array[0] > array[1]) {
+    lowerNumber = array[1]
+    higherNumber = array[0]
+  } else {
+    lowerNumber = array[0]
+    higherNumber = array[1]
+  }
+
+  for (let i = lowerNumber; i <= higherNumber; i++) {
+      sum += i
+  }
+
+console.log(lowerNumber)
+console.log(higherNumber)
+return sum
+}
+console.log(sumAll([5,10]))
+
+** end of script.js **
+
