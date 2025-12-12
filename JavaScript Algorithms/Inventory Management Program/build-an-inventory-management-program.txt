@@ -1,0 +1,63 @@
+** start of script.js **
+
+const inventory = []
+
+function findProductIndex(name) {
+  let count = 0
+  let checker = ''
+  for (let i = 0; i < inventory.length; i++) {          
+        if (inventory[i]["name"] === name.toLowerCase()) {
+           checker += 'yes'
+           break 
+        } count++ 
+  }  
+  if (checker.length === 3) {
+      return count  
+  } else
+  return -1
+}
+function addProduct(product) {
+ let product1 = product["name"].toLowerCase()
+ product["name"] = product["name"].toLowerCase()
+ 
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i]["name"] === product1) {
+        inventory[i]["quantity"] += product["quantity"]
+        return console.log(`${product1} quantity updated`)
+    } 
+  }  
+        inventory.push(product)
+      return console.log(`${product1} added to inventory`) 
+}
+let inventory1 = [
+  {name: "apple", quantity: 5},
+  {name: "banana", quantity: 3},
+  {name: "flour", quantity: 10},
+  {name: "sugar", quantity: 7},
+  {name: "milk", quantity: 2}
+]
+
+function removeProduct(name,quantity) {
+  name = name.toLowerCase()
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i]["name"] === name) {
+      
+      if (inventory[i]["quantity"] > quantity) {
+        inventory[i]["quantity"] -= quantity  
+      return console.log(`Remaining ${name} pieces: ${inventory[i]["quantity"]}`)
+      } else if (inventory[i]["quantity"] === quantity) {
+        
+        inventory.splice(i,1)
+        return console.log(inventory)
+      } else if (inventory[i]["quantity"] < quantity) {
+        return console.log(`Not enough ${name} available, remaining pieces: ${inventory[i]["quantity"]}`)
+      }
+      
+   }
+  } console.log(`${name} not found`)
+}
+console.log(removeProduct("flour",10))
+
+
+** end of script.js **
+
