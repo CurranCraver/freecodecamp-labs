@@ -1,0 +1,44 @@
+** start of script.js **
+
+function sumFibs(number) {
+ let allNums = [0,1]
+ let sum = 0 
+  for (let i = 0; i < number; i++) {
+    allNums.push(allNums[i] + allNums[i + 1])
+  }
+  for (let i = 0; i < allNums.length; i ++) {
+    if (allNums[i] % 2 !== 0 && allNums[i] <= number) {
+      sum += allNums[i]
+    }
+  }
+  return sum   
+}
+console.log(sumFibs(1000))
+
+
+
+
+
+
+
+
+let initial = [0,1]
+for (let i = 0; i < 1000; i++) {
+  initial.push(initial[i] + initial[i+1])
+
+}
+let sum = 0
+for (let i = 0; i <= initial.length; i++) {
+  if (initial[i] % 2 !== 0 && initial[i] <= 1000) {
+    sum += initial[i]
+  }
+}
+
+let test = 187 % 2
+console.log(sum)
+
+
+
+
+** end of script.js **
+
