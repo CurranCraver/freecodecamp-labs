@@ -1,0 +1,18 @@
+** start of script.js **
+
+function dropElements(arr,func) {
+  if (arr.findIndex(char => {
+    return func(char) === true
+  }) >= 0) {
+     return arr.slice(arr.findIndex(char => {
+      return func(char) === true
+    }))
+  } else {
+    return []
+  }
+    
+}
+console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}))
+
+** end of script.js **
+
