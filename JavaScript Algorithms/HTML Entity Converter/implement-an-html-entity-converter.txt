@@ -1,0 +1,26 @@
+** start of script.js **
+
+function convertHTML(string) {
+  let newValue = {
+    "&" : "&amp;",
+    "<" : "&lt;",
+    ">" : "&gt;",
+    "\"" : "&quot;",
+    "'" : "&apos;"
+}
+let result = '' 
+ for (let char of string) {
+   if ("&<>\"'".includes(char)) {
+     result += newValue[char]
+     continue
+   } result += char
+ } 
+return result
+} 
+
+console.log(convertHTML("Dolce & Gabbana"))
+
+
+
+** end of script.js **
+
