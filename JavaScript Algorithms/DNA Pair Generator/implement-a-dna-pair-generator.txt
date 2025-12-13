@@ -1,0 +1,29 @@
+** start of script.js **
+
+function pairElement(string) {
+  let total = []
+    for (let i = 0; i < string.length; i++) {
+      
+      if (string[i] === "A") {
+          total.push(["A","T"])
+      } else if (string[i] === "T") {
+          total.push(["T","A"])
+      } else if (string[i] === "C") {
+          total.push(["C","G"])
+      } else if (string[i] === "G") {
+          total.push(["G","C"])
+          
+          
+      }
+
+
+    } return total
+}
+console.log(pairElement("ATCGA"))
+
+let myString = [ 'A', 'T', 'C', 'G', 'A', 'T', 'C', 'G', 'A', 'T' ]
+
+
+
+** end of script.js **
+
