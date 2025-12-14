@@ -1,0 +1,28 @@
+** start of script.js **
+
+let books = [
+  {title: "poopy", authorName: "Johnny", releaseYear: 2024},
+  {title: "1984", authorName: "Michael", releaseYear: 2025},
+  {title: "Percy Jackson", authorName: "Amy", releaseYear: 1997},
+  {title: "Unc Talks", authorName: "Unc", releaseYear: 1772},
+  {title: "Jercy Packson", authorName: "Yma", releaseYear: 1903}
+];
+
+
+function sortByYear(book1,book2){
+   let result = 0
+   book1.releaseYear - book2.releaseYear > 0 ? result = 1 : book1.releaseYear - book2.releaseYear < 0 ? result = -1 : result = 0
+   return result
+};
+console.log(sortByYear(books[1],books[2]))
+let filteredBooks = books.filter(book => book.releaseYear < 2000)
+console.log(filteredBooks)
+
+filteredBooks.sort(sortByYear)
+
+
+console.log(filteredBooks)
+
+
+** end of script.js **
+
