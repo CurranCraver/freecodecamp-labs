@@ -1,0 +1,17 @@
+** start of script.js **
+
+function getIndexToIns(array,number){
+    let sorted = array.sort(function(a,b) {
+    return a - b}).findIndex(element => element >= number) 
+return sorted === -1 ? array.length : sorted
+}
+  
+
+console.log(getIndexToIns([], 21))
+
+
+
+
+
+** end of script.js **
+
