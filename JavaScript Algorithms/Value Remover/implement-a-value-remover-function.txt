@@ -1,0 +1,10 @@
+** start of script.js **
+
+function destroyer(array1, ...args) {
+  let newArr = array1.filter(element => !args.includes(element))
+  console.log(newArr)
+  return newArr
+}
+
+** end of script.js **
+
