@@ -1,0 +1,24 @@
+** start of script.js **
+
+function diffArray(array1,array2) {
+let total = []
+  let tested1 = array1.filter(element => { 
+    let tester = array2.findIndex(element1 => element1 == element)
+    if (tester < 0) {
+      return element
+    }
+  })
+  let tested2 = array2.filter(element => {
+    let tester = array1.findIndex(elem => element === elem)
+    if (tester < 0) {
+      return element
+    }
+  })
+  total = [...tested1, ...tested2]
+  return total
+};
+console.log(diffArray(["cat","dog","cake"],["catnip","dog","monkey"]))
+
+
+** end of script.js **
+
