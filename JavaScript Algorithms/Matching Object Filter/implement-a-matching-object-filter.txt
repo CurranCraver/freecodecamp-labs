@@ -1,0 +1,48 @@
+** start of script.js **
+
+let array = [{ "apple": 1, "bat": 2 }, { "apple": 1 },                        { "apple": 1, "bat": 2, "cookie": 2 }]
+  
+function whatIsInAName(arr,source) {
+  const val = Object.values(source).join(' ')
+  const sProp = [...Object.keys(source)]
+
+
+  let test = arr.filter(element => {
+
+    let check = Object.values(element).join(' ')
+    let prop = [...Object.keys(element)]
+    console.log(prop)
+
+    if (check.includes(val)) {
+      if (sProp.every(element => {
+        return prop.includes(element)
+      }))
+      return element
+    }
+    console.log(check)
+
+  })
+  return test
+}
+console.log(whatIsInAName(array,{ "apple": 1, "cookie": 2 },))
+
+
+let src = { "apple": 1, "cookie": 2 }
+let obj = { "apple": 1, "bat": 2, "cookie": 2 }
+
+let objArr = [...Object.keys(obj)]
+console.log(objArr)
+let srcArr = [...Object.keys(src)]
+console.log(srcArr)
+
+let bruh = srcArr.every(element => {
+  return objArr.includes(element)
+})
+console.log(bruh)
+
+console.log(Object.hasOwn({ "apple": 1, "bat": 2, "cookie": 2 },{ "apple": 1, "cookie": 2 }))
+
+
+
+** end of script.js **
+
