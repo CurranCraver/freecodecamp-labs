@@ -1,0 +1,33 @@
+** start of script.js **
+
+
+function sumPrimes(num) {
+  let primes = []
+  
+  if (num >= 2) {
+    primes.push(2)
+  }
+  
+  if (num > 2) {
+    for (let i = 3; i <= num; i += 2) {
+      let isPrime = true
+      for (let j = 2; j <= Math.sqrt(i); j++) {
+      
+        if (i % j === 0) {
+          isPrime = false
+          break
+        } 
+          
+      } if (isPrime) {
+          primes.push(i)
+        }
+    }
+  }
+   return primes.reduce((sum,element)=> sum+= element, 0)
+   console.log(primes)          
+}            
+
+console.log(sumPrimes(977))
+
+** end of script.js **
+
