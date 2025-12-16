@@ -1,0 +1,38 @@
+** start of script.js **
+
+function smallestCommons(array) {
+  let a = array[0]
+  let b = array[1]
+
+  function findGCD(a,b) {
+    
+    while(b !== 0) {
+      let temp = b
+      b = a % b
+      a = temp
+    } return a
+  }
+  function findLCM(a,b) {
+    let gcd = findGCD(a,b)
+    return (a * b) / gcd
+  }
+let range = []
+
+let min = Math.min(...array)
+let max = Math.max(...array)
+
+  for (let i = min; i <= max; i++){
+    range.push(i)
+  }
+  let result = range.reduce((lcm, num) => {
+      return findLCM(lcm,num)
+  })
+  return result
+
+
+}
+console.log(smallestCommons([1,5]))
+
+
+** end of script.js **
+
