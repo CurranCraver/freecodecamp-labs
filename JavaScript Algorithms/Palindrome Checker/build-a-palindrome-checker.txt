@@ -1,0 +1,235 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Palindrome Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h2 id="name">CurranCraverFitnessLLC</h2>
+    <div id="content-wrapper">
+        <div id="title-border">
+    <h1 id="title">Is It A Palandrome?</h1>
+        </div>
+            <div id="checker-wrapper">
+    <input id="text-input" placeholder="Check For Palindrome Here"></input>
+    <button id="check-btn">Check</button>
+            </div>
+    <div id="result"></div>
+        </div>
+<script src="script.js"></script>
+</body>
+
+</html>
+
+
+** end of index.html **
+
+** start of styles.css **
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  min-width: 100vw;
+  background-color: rgb(51, 51, 121);
+  flex-grow: 1;
+  gap: 1rem;
+  box-shadow: 0 0 15px black;
+
+}
+
+#name {
+  color: grey;
+  -webkit-text-stroke: .5px;
+  transition: .3s ease-in-out;
+  text-decoration: underline;
+
+}
+
+#name:hover {
+  transform: scale(1.05);
+  cursor: pointer
+}
+
+#content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem; 
+}
+
+#content-wrapper > * {
+  box-shadow: 0 2px 8px rgba(43, 255, 138, 0.5);
+  transition: .3s ease; 
+}
+
+#content-wrapper >:first-child:hover {
+  
+  box-shadow: 0 4px 15px rgba(80, 235, 255, 0.8)
+}
+
+#title-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(79, 64, 102);
+  border-radius: 3rem;
+  border: 1rem;
+
+}
+
+#title {
+  color: rgb(83, 255, 83);
+  font-weight: 700;
+  font-size: 54px;
+  align-self: center;
+  padding: 2rem;
+  transition: .3s ease
+}
+
+#title:hover {
+  transform: scale(1.1)
+}
+#checker-wrapper {
+  background-color: lightgray;
+  transition: .3s ease;
+  padding: 1rem;
+  border-radius: 3rem;
+  gap: 2rem;
+}
+#checker-wrapper >* {
+  padding: 1rem;
+}
+
+#checker-wrapper >*:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 5px rgba(239, 255, 12, 0.8),
+   0 4px 10px rgba(245, 230, 23, 0.6),
+   0 6px 15px rgba(255, 202, 30, 0.4),
+   0 10px 20px rgba(255, 13, 13, 0.973)
+}
+
+#text-input {
+  min-height: 10vh;
+  min-width: 30vw;
+  border-radius: 2rem;
+  text-align: center;
+  background-color: transparent;
+  border-bottom: 4px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+#text-input::placeholder {
+  color: black;
+  font-size: 1rem;
+  opacity: 1;
+  transition: opacity .2s ease;
+  text-decoration: underline;
+}
+#text-input:hover::placeholder {
+  cursor:pointer;
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+
+#text-input:focus::placeholder{
+  opacity: 0;
+}
+
+
+#check-btn {
+  height: 3rem;
+  width: 7rem;
+  border-radius: 20px;
+  background-color: rgb(255, 74, 255);
+  border: none;
+
+}
+
+#check-btn:hover {
+  cursor: pointer;
+}
+
+#result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  align-self:center;
+  height: 100px;
+  width: 400px;
+  background: rgb(135, 255, 135);
+  transition: .5s ease;
+  border-radius: 2rem;
+  font-size: 2rem;
+  text-wrap: wrap;
+}
+
+#result.show {
+  opacity: 1;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const checkBtn = document.querySelector('#check-btn')
+const input = document.querySelector("#text-input")
+const result = document.querySelector('#result')
+const regex = /^[\da-z]*$/i
+
+checkBtn.addEventListener('click',()=> {
+  let text = input.value
+
+  console.log(text)
+
+  if (text === '' || text.trim() === '') {
+    alert("Please input a value")
+    return
+  }
+  
+  let testText = text.split('').filter(char => regex.test(char)).join('').toLowerCase()
+  console.log(testText)
+
+  let reverseText = testText.split('').reverse().join('')
+
+  console.log(reverseText)
+ 
+  if (testText === reverseText) {
+    result.classList.add('show')
+    result.innerHTML = `${text} is a palindrome`
+  console.log(text)}
+  else {
+    result.classList.add('show')
+    result.innerHTML = `${text} is not a palindrome.`
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+** end of script.js **
+
