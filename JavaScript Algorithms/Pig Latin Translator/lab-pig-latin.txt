@@ -1,0 +1,21 @@
+** start of script.js **
+
+function translatePigLatin(string) {
+  const consonant = /^([^aeiou]+)/
+  const matches = string.match(consonant)
+  let piglatin
+  if (matches) {
+    piglatin = string.replace(/^([^aeiou]+)(\w*)/, '$2$1ay')
+
+  }
+  else {
+    piglatin = string + 'way'
+  }
+  return piglatin
+}
+
+
+console.log(translatePigLatin("rythym"))
+
+** end of script.js **
+
