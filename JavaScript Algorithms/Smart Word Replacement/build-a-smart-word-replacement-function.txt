@@ -1,0 +1,21 @@
+** start of script.js **
+
+function myReplace(string1,string2,string3) {
+  const caps = /^[A-Z]/
+  let finalString
+  if (string2.match(caps)){
+    let capFirst = string3[0].toUpperCase()
+    let capitalize = string3.replace(/(^\w)/, capFirst)
+    finalString = string1.replace(string2,capitalize)
+    console.log(finalString)
+  } else {
+    let unCap = string3[0].toLowerCase()
+    let uncapitalize = string3.replace(/^\w/,unCap)
+    finalString = string1.replace(string2,uncapitalize)
+  }
+  return finalString
+} 
+console.log(myReplace("I think we should look up there", "up", "Down"))
+
+** end of script.js **
+
