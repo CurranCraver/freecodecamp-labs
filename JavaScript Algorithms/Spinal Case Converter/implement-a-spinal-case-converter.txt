@@ -1,0 +1,15 @@
+** start of script.js **
+
+function spinalCase(string) {
+  let newString = string.replace(/([A-Z])/g, '-$1')
+  newString = newString.replace(/[ _]/g,"-")
+  newString = newString.replace(/-+/g, "-")
+  newString = newString.replace(/^-/, "")
+  
+  return newString.toLowerCase()
+}
+
+console.log(spinalCase("The_Andy_Griffith_Show"))
+
+** end of script.js **
+
