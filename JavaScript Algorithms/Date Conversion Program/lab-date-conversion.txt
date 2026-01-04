@@ -1,0 +1,31 @@
+** start of script.js **
+
+const currentDate = new Date()
+
+// Pass currentDate, NOT currentDateFormatted
+const currentDateFormat = `Current Date and Time: ${currentDate.toLocaleString("en-US")}`
+console.log(currentDateFormat)
+
+function formatDateMMDDYYYY(date) {
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const year = date.getFullYear()
+  return `Formatted Date (MM/DD/YYYY): ${month}/${day}/${year}`
+}
+
+console.log(formatDateMMDDYYYY(currentDate))  // Also pass currentDate here
+
+function formatDateLong(date) {
+  const months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+
+  const month = months[date.getMonth()]
+  
+  const day = date.getDate()
+  const year = date.getFullYear()
+  return `Formatted Date (Month Day, Year): ${month} ${day}, ${year}`
+}
+console.log(formatDateLong(currentDate))
+
+** end of script.js **
+
