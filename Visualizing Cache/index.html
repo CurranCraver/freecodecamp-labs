@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Worker Flow Diagram</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+    </style>
+    <script src="Cache Diagram.js" defer> </script>
+</head>
+<body>
+    <canvas id="diagram"></canvas>
+
+    <script>
+        const canvas = document.getElementById('diagram');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = 1000;
+        canvas.height = 700;
+
+        const bgColor = '#f8f9fa';
+        const userColor = '#4A90E2';
+        const swColor = '#E67E22';
+        const cacheColor = '#27AE60';
+        const networkColor = '#8E44AD';
+        const arrowColor = '#34495E';
+
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        function drawBox(x, y, width, height, color, label) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height);
+            ctx.strokeStyle = '#2C3E50';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(x, y, width, height);
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            const lines = label.split('\n');
+            lines.forEach((line, i) => {
+                ctx.fillText(line, x + width/2, y + height/2 + (i - (lines.length-1)/2) * 25);
+            });
+        }
+
+        function drawArrow(fromX, fromY, toX, toY, label, color = arrowColor) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(fromX, fromY);
+            ctx.lineTo(toX, toY);
+            ctx.stroke();
+            
+            const angle = Math.atan2(toY - fromY, toX - fromX);
+            ctx.beginPath();
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(toX - 15 * Math.cos(angle - Math.PI/6), toY - 15 * Math.sin(angle - Math.PI/6));
+            ctx.lineTo(toX - 15 * Math.cos(angle + Math.PI/6), toY - 15 * Math.sin(angle + Math.PI/6));
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+            
+            if (label) {
+                const midX = (fromX + toX) / 2;
+                const midY = (fromY + toY) / 2;
+                ctx.fillStyle = '#2C3E50';
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'center';
+                
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(midX - 50, midY - 15, 100, 25);
+                ctx.fillStyle = '#2C3E50';
+                ctx.fillText(label, midX, midY);
+            }
+        }
+
+        // Draw title
+        ctx.fillStyle = '#2C3E50';
+        ctx.font = 'bold 26px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('How Service Workers, Cache & Network Interact', 500, 30);
+
+        // Draw components
+        drawBox(50, 80, 150, 80, userColor, 'USER\n(Browser)');
+        drawBox(425, 180, 150, 100, swColor, 'SERVICE\nWORKER');
+        drawBox(425, 400, 150, 80, cacheColor, 'CACHE');
+        drawBox(800, 180, 150, 100, networkColor, 'NETWORK\n(Server)');
+
+        // Draw arrows for flow
+        drawArrow(200, 120, 425, 220, '① Request', '#E74C3C');
+        drawArrow(500, 280, 500, 400, '③a Check', '#27AE60');
+        drawArrow(575, 230, 800, 230, '③b Fetch', '#8E44AD');
+        drawArrow(875, 200, 575, 200, '⑤ Data', '#8E44AD');
+        drawArrow(500, 320, 500, 280, '⑥ Save', '#27AE60');
+        drawArrow(425, 250, 200, 110, '⑦ Response', '#E74C3C');
+
+        // Add detailed labels
+        ctx.font = '13px Arial';
+        ctx.fillStyle = '#7F8C8D';
+        ctx.textAlign = 'center';
+
+        ctx.fillText('Requests: /app.js, images, etc.', 125, 175);
+        ctx.fillText('Intercepts & decides:', 500, 310);
+        ctx.fillText('Cache or Network?', 500, 330);
+        ctx.fillText('Stores files offline', 500, 500);
+        ctx.fillText('Fresh data from server', 875, 300);
+
+        // Strategy box
+        ctx.strokeStyle = '#E67E22';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([8, 5]);
+        ctx.strokeRect(200, 540, 600, 130);
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#E67E22';
+        ctx.font = 'bold 18px Arial';
+        ctx.fillText('Common Strategy: Cache First, Network Fallback', 500, 570);
+
+        ctx.fillStyle = '#34495E';
+        ctx.font = '15px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('① Service Worker checks cache first', 230, 605);
+        ctx.fillText('② If found → Return instantly ⚡ (FAST!)', 230, 630);
+        ctx.fillText('③ If NOT found → Fetch from network → Save to cache → Return', 230, 655);
+
+        // Add flow numbers on diagram
+        ctx.font = 'bold 16px Arial';
+        ctx.fillStyle = '#E74C3C';
+        ctx.textAlign = 'center';
+        ctx.fillText('②', 320, 170);
+    </script>
+</body>
+</html>
