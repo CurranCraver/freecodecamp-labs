@@ -1,0 +1,37 @@
+** start of script.js **
+
+function permuteString(string,prefix = '',array = []) {
+
+  if (prefix === '' && string.length === 0){
+    return ['']
+  }
+
+  if (string.length === 0) {
+    if (!array.includes(prefix))
+      array.push(prefix);
+      return
+    
+  } 
+  
+  
+
+  for (let i = 0; i < string.length; i++){
+    
+    const char = string[i]
+
+   const rest = string.slice(0,i) + string.slice(i+1)
+ 
+
+     permuteString(rest, prefix + char, array)
+
+  }
+  return array
+}
+
+console.log(permuteString(""))
+
+
+
+
+** end of script.js **
+
